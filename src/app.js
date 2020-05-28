@@ -2,7 +2,6 @@ const express = require("express");
 const cors = require("cors");
 
 const { uuid } = require("uuidv4");
-//{ id: "uuid", title: 'Desafio Node.js', url: 'http://github.com/...', techs: ["Node.js", "..."], likes: 0 };
 const app = express();
 
 app.use(express.json());
@@ -10,22 +9,12 @@ app.use(cors());
 
 const repositories = [];
 
-app.get("/repositories", (request, response) => {
-  // TODO
-  //const {title} = request.query;
-
-  //const results = title
-    //? projects.filter(project => project.title.includes(title))
-    //: projects;
-
-  // console.log(title);
-  // console.log(owner);
+app.get("/repositories", (request, response) => { 
 
   return response.json(repositories);
 });
 
 app.post("/repositories", (request, response) => {
-  // TODO
   const {title, url, techs} = request.body;
 
   const repository = {id: uuid(), title, url, techs, likes: 0};
@@ -35,7 +24,6 @@ app.post("/repositories", (request, response) => {
 });
 
 app.put("/repositories/:id", (request, response) => {
-  // TODO
   const {id} = request.params;
   const {title, url, techs} = request.body;
 
@@ -60,7 +48,6 @@ app.put("/repositories/:id", (request, response) => {
 });
 
 app.delete("/repositories/:id", (request, response) => {
-  // TODO
   const {id} = request.params;
 
   const repositoryIndex = repositories.findIndex(repository => repository.id === id);
@@ -75,7 +62,6 @@ app.delete("/repositories/:id", (request, response) => {
 });
 
 app.post("/repositories/:id/like", (request, response) => {
-  // TODO
   const {id} = request.params;
 
   const repositoryIndex = repositories.findIndex(repository => repository.id === id);
